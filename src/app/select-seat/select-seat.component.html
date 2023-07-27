@@ -1,0 +1,36 @@
+<nav>
+  <div class="left-nav-item">
+    <div class="nav-item-container"><a href="#back" class="fa fa-angle-left back-logo"></a></div>
+    <div class="nav-item-container">
+      {{showObj.movieTitle}} <span style="font-size: 10px; color: beige">{{showObj?.genre}} | {{showObj?.duration}} | {{showObj?.viewTypeName}}</span><br>
+      <small class="mallname light-grey-text"> {{showObj.theaterDisplayName}}</small>
+    </div>
+  </div>
+  <div class="right-nav-item">
+    <div class="nav-item-container small-text num-of-tickets pointer" style="margin-right:40px;"><input type="number" style="width: 40px;" [(ngModel)]="noOfTicket"> Tickets</div>
+  </div>
+</nav>
+
+<div class="content" style="width: 80%">
+  <div *ngFor="let sO of screenObj.screenSeatTypes" style="padding-top: 10px">
+    <span class="light-grey-text">{{sO.seatTypeName}}</span><br><hr>
+    <div class="seats">
+      <div class="row" *ngFor="let recipient of sO.screenMap.keys()">
+        <span class="light-grey-text seat-row">{{recipient}} &nbsp; &nbsp; </span>
+        <span class="seat" style="cursor: pointer;" [ngClass]="{'active': se.selected}" (click)="selectSeat(se)" *ngFor="let se of sO.screenMap.get(recipient)">
+          {{se.rowNum}}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="text-center" style="
+    height: 30px;
+    background: aliceblue;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 4px;
+">All eyes this way please!</div>
+  <div class="text-center">
+    <button class="btn btn-danger"  style="width: 200px;" (click)="payTicket()">Book</button>
+  </div>
+</div>

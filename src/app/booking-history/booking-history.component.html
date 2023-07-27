@@ -1,0 +1,23 @@
+<div class="row">
+  <h2 class="col-md-10" style="padding: 10px;margin-left: 40px;">Book History</h2>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">User Id</th>
+    <th scope="col">Show</th>
+    <th scope="col">NumberOfTicket</th>
+    <th scope="col">Total Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let t of theaterList">
+    <th scope="row">{{t.id}}</th>
+    <td>{{t.userId}}</td>
+    <td>{{t.movieTitle}}</td>
+    <td>{{t.numberOfTicket}}</td>
+    <td>{{t.totalPrice}}</td>
+  </tr>
+  </tbody>
+</table>

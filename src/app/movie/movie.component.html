@@ -1,0 +1,114 @@
+<div class="row">
+  <h2 class="col-md-10" style="padding: 10px;margin-left: 40px;">Movie</h2>
+  <button
+    style="margin: 10px; padding: 10px; float: right"
+    type="button"
+    class="btn btn-primary"
+    (click)="openPopup()">Add Movie
+  </button>
+</div>
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document" style="max-width: 80%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Movie</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-3"><div class="form-group">
+              <label for="name">Movie Title</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="theaterObj.title" placeholder="Enter Movie Title" required>
+            </div></div>
+            <div class="col-md-3"><div class="form-group">
+              <label for="email">Movie Description</label>
+              <input type="text" class="form-control"  id="email" [(ngModel)]="theaterObj.description" placeholder="Movie Description" required>
+            </div></div>
+            <div class="col-md-3"><div class="form-group">
+              <label for="location">Movie Duration</label>
+              <input type="text" class="form-control"  id="location" [(ngModel)]="theaterObj.duration" placeholder="Movie Duration" required>
+            </div></div>
+            <div class="col-md-3"><div class="form-group">
+              <label for="latitude">Release Date</label>
+              <input type="date" class="form-control"  id="latitude" [(ngModel)]="theaterObj.releaseTs" placeholder="Enter Release Date" required>
+            </div></div>
+        </div>
+        <div class="row">
+          <div class="col-md-3"> <div class="form-group">
+            <label for="longitude">Genere</label>
+            <input type="text" class="form-control"  id="longitude" [(ngModel)]="theaterObj.genere" placeholder="Enter Genere" required>
+          </div></div>
+          <div class="col-md-3"><div class="form-group">
+            <label for="latitude1">Trailer URL</label>
+            <input type="text" class="form-control"  id="latitude1" [(ngModel)]="theaterObj.trailerUrl" placeholder="Enter Trailer URL" required>
+          </div></div>
+          <div class="col-md-3"><div class="form-group">
+            <label for="longitude2">Thumbnai URL</label>
+            <input type="text" class="form-control"  id="longitude2" [(ngModel)]="theaterObj.thumbnailUrl" placeholder="Enter Thumbnai URL" required>
+          </div></div>
+        </div>
+        <div style="min-height: 100px;">
+          <h5>Add Language</h5>
+          <div class="text-center">
+            <button class="btn btn-primary"  style="float: right;" (click)="addLanguage(theaterObj)">Add Language</button>
+          </div>
+          <div class="seats" style="padding-top: 20px;" *ngFor="let seatObj of theaterObj.movieViewType">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="rMax">Language</label>
+                  <input type="text" class="form-control" id="rMax" [(ngModel)]="seatObj.languageName" placeholder="English" required>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="cMax">View Type</label>
+                  <input type="text" class="form-control" id="cMax" [(ngModel)]="seatObj.viewTypeName" placeholder="2D/3D" required>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="save(theaterObj)">Add</button>
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Title</th>
+    <th scope="col">Duration</th>
+    <th scope="col">Release Date</th>
+    <th scope="col">Genere</th>
+    <th scope="col">View Type</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let t of theaterList">
+    <th scope="row">{{t.id}}</th>
+    <td>{{t.title}}</td>
+    <td>{{t.duration}}</td>
+    <td>{{t.releaseTs | date: 'dd/MM/yyyy'}}</td>
+    <td>{{t.genere}}</td>
+    <td>
+      <div *ngFor="let ss of t.movieViewTypes">
+        <b>View: </b><span>{{ss.viewTypeName}}</span>&nbsp;&nbsp;
+        <b>Language: </b> <span>{{ss.languageName}}</span>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

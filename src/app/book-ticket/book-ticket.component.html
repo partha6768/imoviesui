@@ -1,0 +1,36 @@
+<div *ngIf="moveObj">
+  <nav>
+    <div class="left-nav-item">
+      <div class="nav-item-container"><a href="#back" class="fa fa-angle-left back-logo"></a></div>
+      <div class="nav-item-container">
+        {{moveObj?.movieTitle}}<br>
+        <small class="mallname light-grey-text"> {{moveObj?.genre}} | {{moveObj?.duration}} | {{moveObj?.viewTypeName}}</small>
+      </div>
+    </div>
+    <div class="right-nav-item">
+      <div class="nav-item-container small-text num-of-tickets pointer" style="margin-right:40px;">{{moveObj?.languageName}} <span class="fa fa-angle-down"></span></div>
+      <div class="nav-item-container"><span class="fa fa-close pointer"></span></div>
+    </div>
+  </nav>
+  <header>
+    <button class="date-select-button" style="cursor: pointer;" (click)="selectedFilterDate = s;" [ngClass]="{'active': selectedFilterDate === s}" *ngFor="let s of showDateList | slice:0:6"> {{s | date : 'dd/MM/yyyy'}}</button>
+  </header>
+
+  <div class="content">
+    <div *ngFor="let sh of showList">
+      <div>
+        <div>{{sh.theaterDisplayName}}</div>
+        <div *ngIf="getShowCalender(sh.showCalendars).length > 0">
+          <button class="timing-select-button" *ngFor="let shC of getShowCalender(sh.showCalendars)" (click)="selectSeat(sh.id,shC.id)"> {{shC.startTime  | date:'shortTime'}}</button>
+        </div>
+        <div *ngIf="getShowCalender(sh.showCalendars).length == 0">
+          <span style="color: red; font-size: 10px;">No Show Time Available</span>
+        </div>
+        </div>
+      <hr>
+    </div>
+  </div>
+</div>
+<div *ngIf="!moveObj">
+  No Show Available
+</div>

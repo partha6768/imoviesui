@@ -1,0 +1,71 @@
+<div class="row">
+  <h2 class="col-md-10" style="padding: 10px;margin-left: 40px;">Theater</h2>
+  <button
+    style="margin: 10px; padding: 10px; float: right"
+    type="button"
+    class="btn btn-primary"
+    (click)="openPopup()">Add Theater
+  </button>
+</div>
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Theater</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="name">Theater Name</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="theaterObj.displayName" placeholder="Enter Theater Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Contact Email</label>
+          <input type="text" class="form-control"  id="email" [(ngModel)]="theaterObj.vendorId" placeholder="Enter Contact Email" required>
+        </div>
+        <div class="form-group">
+          <label for="location">Theater Location</label>
+          <input type="text" class="form-control"  id="location" [(ngModel)]="theaterObj.address" placeholder="Enter Theater Location" required>
+        </div>
+        <div class="form-group">
+          <label for="latitude">Latitude</label>
+          <input type="text" class="form-control"  id="latitude" [(ngModel)]="theaterObj.latitude" placeholder="Enter Latitude" required>
+        </div>
+        <div class="form-group">
+          <label for="longitude">Longitude</label>
+          <input type="text" class="form-control"  id="longitude" [(ngModel)]="theaterObj.longitude" placeholder="Enter Longitude" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="save(theaterObj)">Add</button>
+        <button type="button" class="btn btn-danger"
+                (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Address</th>
+    <th scope="col">Email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let t of theaterList">
+    <th scope="row">{{t.id}}</th>
+    <td>{{t.name}}</td>
+    <td>{{t.address}}</td>
+    <td>{{t.vendorId}}</td>
+  </tr>
+  </tbody>
+</table>

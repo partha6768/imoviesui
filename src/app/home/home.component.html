@@ -1,0 +1,39 @@
+
+<div class="container">
+  <div class="row">
+    <div class="input-group col-12">
+      <div class="input-group-prepend">
+        <button class="btn btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ALL</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item">All Movies</a>
+          <a class="dropdown-item">All Show</a>
+        </div>
+      </div>
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+      </div>
+      <input type="text" class="form-control" (change)="filterList()" [(ngModel)]="searchText" placeholder="Search for Movies, Events, Plays  and Sports" aria-label="Text input with dropdown button">
+    </div>
+  </div>
+</div>
+<div class="movieList">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let movie of filterList()" class="col col-md-3">
+        <div class="recentMovies">
+          <div id="movieList" class="card">
+            <img class="card-img-top" [src]="movie.thumbnailUrl" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{movie.title}}</h5>
+              <p class="card-text">{{movie.duration}}</p>
+              <p class="card-text movieDate">{{movie.genere}}</p>
+              <p class="card-text movieDate"><span *ngFor="let aa of movie.movieViewTypes">{{aa.viewTypeName}} </span></p>
+            </div>
+            <button class="btn btn-danger" (click)="bookTicket(movie.id)">Book tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

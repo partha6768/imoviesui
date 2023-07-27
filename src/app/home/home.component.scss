@@ -1,0 +1,43 @@
+.searchIcon {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 6%;
+}
+#movieInputs {
+  width: 50%;
+  padding-left: 40px;
+  margin-left: 5%;
+}
+.movieSearch {
+  position: relative;
+  left: 25%;
+}
+.displayMovieList {
+  width: 50%;
+}
+.dropdown {
+  top: 38px;
+  width: 10px;
+}
+#movieList {
+  margin: 16px 0;
+  font-family: cursive;
+
+  .card-title {
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .card-text {
+    margin-bottom: 3px;
+    font-weight: 400;
+  }
+  .movieDate {
+    font-weight: 200;
+  }
+}
+.card-body {
+  padding-left: 5px;
+}
+.card:hover {
+  border: 2px solid burlywood;
+}

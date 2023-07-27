@@ -1,0 +1,29 @@
+<div class="row">
+  <h2 class="col-md-10" style="padding: 10px;margin-left: 40px;">Show</h2>
+  <button
+    style="margin: 10px; padding: 10px; float: right"
+    type="button"
+    class="btn btn-primary"
+    (click)="addShow()">Add Show
+  </button>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Theater</th>
+    <th scope="col">Screen</th>
+    <th scope="col">Movie</th>
+    <th scope="col">Start Date</th>
+    <th scope="col">End Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let t of showList">
+    <th scope="row">{{t.theaterDisplayName}}</th>
+    <td>{{t.screenName}}</td>
+    <td>{{t.movieTitle}}</td>
+    <td>{{t.startTs  | date: 'dd/MM/yyyy'}}</td>
+    <td>{{t.endTs  | date: 'dd/MM/yyyy'}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,69 @@
+<h4>Create Screen</h4>
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="screenObj.name" placeholder="Screen Name" required>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="theatreSelect1">Theatre</label>
+      <select class="form-control" id="theatreSelect1" [(ngModel)]="screenObj.theaterId">
+        <option *ngFor="let t of theaterList" [value]="t.id">{{t.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="viewTypeName">View Type</label>
+      <select class="form-control" id="viewTypeName" [(ngModel)]="screenObj.viewTypeName">
+        <option *ngFor="let v of viewList" [value]="v.name">{{v.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="audioTypeName">Audio Type</label>
+      <select class="form-control" id="audioTypeName" [(ngModel)]="screenObj.audioTypeName">
+        <option *ngFor="let a of audioList" [value]="a.name">{{a.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<hr>
+<div style="min-height: 100px;">
+  <h5>Add Seat</h5>
+  <div class="text-center">
+    <button class="btn btn-primary"  style="float: right;" (click)="addSeat()">Add Seat</button>
+  </div>
+  <div class="seats" style="padding-top: 20px;" *ngFor="let seatObj of seatTmpList">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="seatTypeName">Seat Type</label>
+          <select class="form-control" id="seatTypeName" [(ngModel)]="seatObj.seatTypeName">
+            <option *ngFor="let a of seatList" [value]="a.name">{{a.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="rMax">Row Max Range</label>
+          <input type="number" class="form-control" id="rMax" [(ngModel)]="seatObj.seatColNum" placeholder="Row Max Range" required>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="cMax">Column Max Range</label>
+          <input type="number" class="form-control" id="cMax" [(ngModel)]="seatObj.seatRowNum" placeholder="Column Max Range" required>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="text-center" style="margin-top: 10px">
+  <button class="btn btn-light"  style="float: right;" (click)="cancelScreen()">Cancel</button>
+  <button class="btn btn-danger"  style="float: right;" (click)="saveScreen(screenObj, seatTmpList)">Save Screen</button>
+</div>

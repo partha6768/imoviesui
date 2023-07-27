@@ -1,0 +1,34 @@
+<div class="row">
+  <h2 class="col-md-10" style="padding: 10px;margin-left: 40px;">Screen</h2>
+  <button
+    style="margin: 10px; padding: 10px; float: right"
+    type="button"
+    class="btn btn-primary"
+    (click)="addScreen()">Add Screen
+  </button>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Theater Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">View Type</th>
+    <th scope="col">Audio Type</th>
+    <th scope="col">Seat</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let t of screenList">
+    <th scope="row">{{t.theaterId}}</th>
+    <td>{{t.name}}</td>
+    <td>{{t.viewTypeName}}</td>
+    <td>{{t.audioTypeName}}</td>
+    <td>
+      <div *ngFor="let ss of t.screenSeatTypes">
+        <b>Type: </b><span>{{ss.seatTypeName}}</span>&nbsp;&nbsp;
+        <b>No of Seat: </b> <span>{{ss.seats.length}}</span>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

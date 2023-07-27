@@ -1,0 +1,57 @@
+<div class="animate">
+  <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><span class="fa fa-home"></span></a>
+    <a class="navbar-brand" href="#">Movies</a>
+    <a class="navbar-brand" href="#">Events</a>
+    <a class="navbar-brand" href="#">Plays</a>
+    <a class="navbar-brand" href="#">Sports</a>
+    <a class="navbar-brand" href="#">Trailers & Videos</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ml-md-auto d-md-flex">
+        <li class="nav-item" *ngIf="userType == 'Vendor'">
+          <div class="dropdown">
+            <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-cog"></span>&nbsp;&nbsp;SETTING</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" (click)="addTheater()">Add Theatre</a>
+              <a class="dropdown-item"  (click)="addScreen()">Add Screen</a>
+              <a class="dropdown-item"  (click)="addMovie()">Add Movie</a>
+              <a class="dropdown-item"  (click)="addShow()">Add Show</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <a class="nav-link" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-map-marker"></span>&nbsp;&nbsp;{{selectedCity.name}}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+              <a *ngFor="let city of cityList" class="dropdown-item" (click)="changeCity(city)">{{city.name}}</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">OFFERS
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">SUPPORT</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"> <span class="fa fa-bell"></span></a>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <a class="nav-link" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="fa fa-user"></span>&nbsp;&nbsp;{{user.name}}</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3" style="right: 0; left: auto;">
+              <a class="dropdown-item" (click)="bookingHistory()">Booking History</a>
+              <a class="dropdown-item" (click)="signOut()">Log Out</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

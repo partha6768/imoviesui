@@ -1,0 +1,86 @@
+<h4>Create Show</h4>
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="theatreSelect1">Theatre</label>
+      <select class="form-control" id="theatreSelect1" [(ngModel)]="showObj.theaterId" (change)="loadScreen(showObj.theaterId)">
+        <option *ngFor="let t of theaterList" [value]="t.id">{{t.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="screenName">Screen</label>
+      <select class="form-control" id="screenName" [(ngModel)]="showObj.screenName" (change)="setScreen(showObj.screenName)">
+        <option *ngFor="let v of screenList" [value]="v.name">{{v.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="audioTypeName">Movie</label>
+      <select class="form-control" id="audioTypeName" [(ngModel)]="showObj.movieId">
+        <option *ngFor="let a of movieList" [value]="a.id">{{a.title}}</option>
+      </select>
+    </div>
+  </div>
+  </div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <label for="showStartDate">Show Start Date</label>
+      <input type="date" class="form-control"  id="showStartDate" [(ngModel)]="showObj.startTs" placeholder="Enter Show Start Date" required>
+    </div>
+  </div>
+  <div class="col-md-3"><div class="form-group">
+    <label for="showEndDate">Show End Date</label>
+    <input type="date" class="form-control"  id="showEndDate" [(ngModel)]="showObj.endTs" placeholder="Enter Show End Date" required>
+  </div></div>
+</div>
+<hr>
+<div style="min-height: 100px;">
+  <h5>Add Show Calendar</h5>
+  <div class="text-center">
+    <button class="btn btn-primary"  style="float: right;" (click)="addSeat(showObj)">Add Calender</button>
+  </div>
+  <div class="seats" style="padding-top: 20px;" *ngFor="let seatObj of showObj.showCalendars">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="showStartDateaa">Show Run Date</label>
+          <input type="date" class="form-control"  id="showStartDateaa" [(ngModel)]="seatObj.showRunDate" placeholder="Enter Show Run Date" required>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="showStartDatea">Show Start Time</label>
+          <input type="time" class="form-control"  id="showStartDatea" [(ngModel)]="seatObj.startTime" placeholder="Enter Show Start Time" required>
+        </div>
+      </div>
+      <div class="col-md-3"><div class="form-group">
+        <label for="showEndDatea">Show End Time</label>
+        <input type="time" class="form-control"  id="showEndDatea" [(ngModel)]="seatObj.endTime" placeholder="Enter Show End Time" required>
+      </div></div>
+    </div>
+    <div class="row" *ngFor="let sObj of screenObj.screenSeatTypes">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="showStartDateaak">Seat Name</label>
+          <input type="text" class="form-control"  id="showStartDateaak" [(ngModel)]="sObj.seatTypeName" required>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="showStartDateal">Price</label>
+          <input type="number" class="form-control"  id="showStartDateal" [(ngModel)]="sObj.price" placeholder="200" required>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="text-center" style="margin-top: 10px">
+  <button class="btn btn-light"  style="float: right;" (click)="cancelScreen()">Cancel</button>
+  <button class="btn btn-danger"  style="float: right;" (click)="saveScreen(showObj, seatTmpList)">Save Show</button>
+</div>
